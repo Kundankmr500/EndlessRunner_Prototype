@@ -28,12 +28,14 @@ namespace Player
             laneDistance = playerController.GetModel().LaneDistance;
             minDesiredLane = playerController.GetModel().MinDesiredLane;
             maxDesiredLane = playerController.GetModel().MaxDesiredLane;
+
         }
 
         void FixedUpdate()
         {
             PlayerMovement();
             PlayerInput();
+            Debug.Log(characterController.isGrounded);
         }
 
         internal void CheckPlayerTransform()
@@ -49,10 +51,13 @@ namespace Player
 
         private void PlayerInput()
         {
-            InputX = Input.GetAxis("Horizontal");
-            InputY = Input.GetAxis("Vertical");
-            animator.SetFloat("InputX", InputX);
-            animator.SetFloat("InputY", InputY);
+            if (desiredLane > minDesiredLane && desiredLane < maxDesiredLane)
+            {
+                InputX = Input.GetAxis("Horizontal");
+                InputY = Input.GetAxis("Vertical");
+                animator.SetFloat("InputX", InputX);
+                animator.SetFloat("InputY", InputY);
+            }
 
             CheckLane();
         }
@@ -62,6 +67,8 @@ namespace Player
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                animator.SetTrigger("GoRight");
+                Debug.Log("Right");
                 desiredLane++;
                 if (desiredLane == maxDesiredLane + 1)
                     desiredLane = maxDesiredLane;
@@ -69,11 +76,14 @@ namespace Player
 
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                animator.SetTrigger("GoLeft");
+                Debug.Log("left");
                 desiredLane--;
                 if (desiredLane == minDesiredLane - 1)
                     desiredLane = minDesiredLane;
             }
-
+            //animator.transform.position = Vector3.zero;
+            //animator.transform.eulerAngles = Vector3.zero;
             CalculatingPlayerNextPos();
         }
 

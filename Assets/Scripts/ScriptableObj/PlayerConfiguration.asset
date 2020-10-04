@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fe76af7f7885f44a30463c25fd71e3, type: 3}
   m_Name: PlayerConfiguration
   m_EditorClassIdentifier: 
-  PlayerForwaedSpeed: 2
-  LaneChangeTime: 5
+  PlayerForwaedSpeed: 0
+  LaneChangeTime: 10
   MinDesiredLane: 0
   MaxDesiredLane: 2
   LaneDistance: 2

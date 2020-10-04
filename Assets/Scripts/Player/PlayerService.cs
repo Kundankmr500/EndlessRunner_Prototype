@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Camera;
 
 namespace Player
 {
     public class PlayerService : MonoBehaviour
     {
+        public CameraService cameraService;
         public Transform PlayerParent;
         public PlayerView playerPrefab;
         public PlayerScripptableObj playerScripptableObj;
@@ -20,6 +20,7 @@ namespace Player
             PlayerModel playerModel = new PlayerModel(playerScripptableObj);
             PlayerController playerController = new PlayerController(playerModel, playerPrefab, PlayerParent);
             playerController.InitItem(playerController);
+            cameraService.SetPlayerTransform(playerController);
         }
 
     }

@@ -5,7 +5,7 @@ namespace Player
     [CreateAssetMenu(fileName = "PlayerConfiguration", menuName = "ScriptableObjects/NewPlayerConfig")]
     public class PlayerScripptableObj : ScriptableObject
     {
-        [Range(1, 10)]
+        [Range(0, 10)]
         public float PlayerForwaedSpeed;
         [Range(1, 30)]
         public float LaneChangeTime;
