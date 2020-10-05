@@ -1070,7 +1070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3564133661642389488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.466, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3962290071254524349}
@@ -1089,9 +1089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f0b60b42c9e9d41855174f3b2ad087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6925635757597211591}
+  roadSide: 1
+  PlayerAnimator: {fileID: 6925635757597211591}
   characterController: {fileID: 3564133661642389500}
   forwardSpeed: 0
+  NewLanePos: 0
 --- !u!143 &3564133661642389500
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1468,7 +1470,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: ce5d72df3ca25244d89e2c01e853d082, type: 3}
   m_Controller: {fileID: 9100000, guid: a8b60df99ea2190469703051abd7381d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

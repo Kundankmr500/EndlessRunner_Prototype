@@ -8,12 +8,23 @@ namespace Player
         [Range(0, 10)]
         public float PlayerForwaedSpeed;
         [Range(1, 30)]
-        public float LaneChangeTime;
+        public float LaneChangeSpeed;
         [Range(0, 3)]
-        public int MinDesiredLane;
-        [Range(0, 3)]
-        public int MaxDesiredLane;
+        public int DistanceBetweenLane;
         [Range(0, 10)]
-        public int LaneDistance;
+        public int JumpForce;
+        [Range(0, 10)]
+        public int GravityValue;
+
+        [Header("Player Input")]
+
+        public KeyCode PlayerRightKey;
+        public KeyCode PlayerRightKeyAlter;
+        public KeyCode PlayerLeftKey;
+        public KeyCode PlayerLeftKeyAlter;
+        public KeyCode PlayerUpKey;
+        public KeyCode PlayerUpKeyAlter;
+        public KeyCode PlayerDownKey;
+        public KeyCode PlayerDownKeyAlter;
     }
 }
