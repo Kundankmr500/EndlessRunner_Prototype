@@ -1,5 +1,4 @@
-﻿using Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Camera
 {
@@ -8,7 +7,8 @@ namespace Camera
         [SerializeField]
         private Transform Target;
         private Vector3 offset;
-        private float followSpeed = 1;
+        [SerializeField]
+        private float followSpeed = 5;
 
         public void SetTargetTransform(Transform playerTransform)
         {
@@ -18,7 +18,7 @@ namespace Camera
 
         void LateUpdate()
         {
-            Vector3 newPosition = new Vector3(transform.position.x, transform.position.y,
+            Vector3 newPosition = new Vector3(offset.x + Target.position.x, transform.position.y,
                                      offset.z + Target.position.z);
 
             transform.position = Vector3.Lerp(transform.position, newPosition, followSpeed * Time.deltaTime);

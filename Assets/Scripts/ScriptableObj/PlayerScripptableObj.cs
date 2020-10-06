@@ -10,7 +10,7 @@ namespace Player
         [Range(1, 30)]
         public float LaneChangeSpeed;
         [Range(0, 3)]
-        public int DistanceBetweenLane;
+        public float DistanceBetweenLane;
         [Range(0, 10)]
         public int JumpForce;
         [Range(0, 10)]

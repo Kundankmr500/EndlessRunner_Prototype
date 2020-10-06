@@ -9,7 +9,7 @@
 
     }
 
-    public enum RoadSide
+    public enum RoadLane
     {
         None,
         Left,

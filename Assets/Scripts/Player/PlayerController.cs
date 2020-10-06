@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Singalton;
+using UnityEngine;
 
 namespace Player
 {
@@ -21,9 +22,14 @@ namespace Player
             return PlayerModel;
         }
 
-        internal void InitItem(PlayerController playerController)
+        public void FireOnPlayerHitEvent(int amount)
         {
-            playerController.PlayerView.CheckPlayerTransform();
+            EventService.Instance.FireOnPlayerHit(amount);
+        }
+
+        public void FireOnCoinPickedEvent(int amount)
+        {
+            EventService.Instance.FireOnCoinPicked(amount);
         }
     }
 }

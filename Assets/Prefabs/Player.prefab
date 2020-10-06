@@ -573,9 +573,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6560321071138713281, guid: ce5d72df3ca25244d89e2c01e853d082, type: 3}
+  - {fileID: 2100000, guid: 7399a5ace68fa0340b9eb8b96d0fc98f, type: 2}
   - {fileID: 4245538614177576100, guid: ce5d72df3ca25244d89e2c01e853d082, type: 3}
-  - {fileID: 7254865136004577293, guid: ce5d72df3ca25244d89e2c01e853d082, type: 3}
+  - {fileID: 2100000, guid: 3fc11f6fad423c24ab1098fd57d9b1eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f0b60b42c9e9d41855174f3b2ad087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSide: 1
+  roadLane: 2
   PlayerAnimator: {fileID: 6925635757597211591}
   characterController: {fileID: 3564133661642389500}
   forwardSpeed: 0

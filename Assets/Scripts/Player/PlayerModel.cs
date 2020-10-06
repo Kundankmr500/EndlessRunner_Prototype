@@ -7,7 +7,7 @@ namespace Player
     {
         public float ForwardSpeed { get; }
         public float LaneChangeSpeed { get; }
-        public int DistanceBetweenLane { get; }
+        public float DistanceBetweenLane { get; }
         public int JumpForce { get; }
         public int GravityValue { get; }
         public KeyCode PlayerRightKey { get; }

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Environment;
+using UnityEngine;
 
 namespace Player
 {
-    public class PlayerView : MonoBehaviour
+    public class PlayerView : MonoBehaviour, IDestructable
     {
-        public RoadSide roadSide;
+        public RoadLane roadLane;
         public Animator PlayerAnimator;
         [SerializeField]
         private CharacterController characterController;
@@ -12,8 +13,8 @@ namespace Player
         private float forwardSpeed;
         private PlayerController playerController;
 
-        private int distanceBetweenLane;
-        private float PlayerHeightValue = 2;
+        private float distanceBetweenLane;
+        private float PlayerHeightValue = 0;
         [SerializeField]
         private float NewLanePos = 0f;
         private float YValueForVerticle = 0f;
@@ -29,20 +30,20 @@ namespace Player
             forwardSpeed = playerController.GetModel().ForwardSpeed;
             distanceBetweenLane = playerController.GetModel().DistanceBetweenLane;
             characterController = GetComponentInChildren<CharacterController>();
-            roadSide = RoadSide.Mid;
+            roadLane = RoadLane.Mid;
         }
 
         void FixedUpdate()
         {
             PlayerInput();
+        }
+  
+
+        void Update()
+        {
             CheckRoadLane();
             PlayerJump();
             PlayerSlide();
-        }
-
-        internal void CheckPlayerTransform()
-        {
-            
         }
 
 
@@ -64,31 +65,31 @@ namespace Player
         {
             if (SwipeLeft)
             {
-                if (roadSide == RoadSide.Mid)
+                if (roadLane == RoadLane.Mid)
                 {
                     NewLanePos = -distanceBetweenLane;
-                    roadSide = RoadSide.Left;
+                    roadLane = RoadLane.Left;
                     PlayerAnimator.Play(AnimationName.Left);
                 }
-                else if (roadSide == RoadSide.Right)
+                else if (roadLane == RoadLane.Right)
                 {
                     NewLanePos = 0;
-                    roadSide = RoadSide.Mid;
+                    roadLane = RoadLane.Mid;
                     PlayerAnimator.Play(AnimationName.Left);
                 }
             }
             else if (SwipeRight)
             {
-                if (roadSide == RoadSide.Mid)
+                if (roadLane == RoadLane.Mid)
                 {
                     NewLanePos = distanceBetweenLane;
-                    roadSide = RoadSide.Right;
+                    roadLane = RoadLane.Right;
                     PlayerAnimator.Play(AnimationName.Right);
                 }
-                else if (roadSide == RoadSide.Left)
+                else if (roadLane == RoadLane.Left)
                 {
                     NewLanePos = 0;
-                    roadSide = RoadSide.Mid;
+                    roadLane = RoadLane.Mid;
                     PlayerAnimator.Play(AnimationName.Right);
                 }
             }
@@ -107,7 +108,7 @@ namespace Player
                                 Time.deltaTime * playerController.GetModel().LaneChangeSpeed);
 
             characterController.Move(moveVector);
-
+            
 
         }
 
@@ -135,6 +136,21 @@ namespace Player
                 PlayerAnimator.Play(AnimationName.Slide);
 
             }
+        }
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.GetComponent<CoinView>())
+            {
+                other.gameObject.SetActive(false);
+                playerController.FireOnCoinPickedEvent(10);
+            }
+        }
+
+        public void TakeDamage(int amount)
+        {
+            playerController.FireOnPlayerHitEvent(amount);
         }
     }
 }

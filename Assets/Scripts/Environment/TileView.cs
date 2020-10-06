@@ -1,18 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TileView : MonoBehaviour
+namespace Environment
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TileView : MonoBehaviour
     {
-        
-    }
+        private TileController tileController;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        internal void Initialize(TileController tileController)
+        {
+            this.tileController = tileController;
+        }
+
+        internal void CheckTileTransform(float zSpawn)
+        {
+            transform.SetPositionAndRotation(transform.forward * zSpawn, transform.rotation);
+            gameObject.SetActive(true);
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+
+        internal void DisableTile()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
