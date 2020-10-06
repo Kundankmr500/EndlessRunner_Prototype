@@ -36,6 +36,7 @@ namespace Game
         // start with countdown timer
         private IEnumerator StartCountdown(int countdownValue)
         {
+            StartTimerUI.text = countdownValue.ToString();
             StartTimerUI.transform.parent.gameObject.SetActive(true);
             while (countdownValue > -1)
             {

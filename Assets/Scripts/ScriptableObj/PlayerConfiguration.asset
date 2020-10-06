@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fe76af7f7885f44a30463c25fd71e3, type: 3}
   m_Name: PlayerConfiguration
   m_EditorClassIdentifier: 
-  PlayerForwaedSpeed: 10
+  PlayerForwaedSpeed: 7
   LaneChangeSpeed: 4
   DistanceBetweenLane: 2.5
   JumpForce: 7

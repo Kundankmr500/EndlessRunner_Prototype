@@ -59,14 +59,14 @@ namespace Achievement
 
 
         //Show player Score to th User
-        void ShowScoreOnScreen(int score)
+        private void ShowScoreOnScreen(int score)
         {
             ScoreUI.text = Constants.Score + score;
         }
 
 
         //Distance covered by the player
-        void CalculateDistanceCovered()
+        private void CalculateDistanceCovered()
         {
             distance += Vector3.Distance(previousPosition, playerController.PlayerView.transform.position);
             previousPosition = playerController.PlayerView.transform.position;
@@ -80,7 +80,7 @@ namespace Achievement
 
 
         //Time taken by the player
-        void CalculateTimeTaken()
+        private void CalculateTimeTaken()
         {
             playerTime += Time.deltaTime;
 
